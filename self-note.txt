@@ -1,0 +1,19 @@
+npx create-vite@latest task-manager --template react-ts
+
+npm install react-router-dom
+npm install axios
+npm install firebase
+
+npm install tailwindcss @tailwindcss/vite
+npm install @headlessui/react @heroicons/react
+
+##### Firebase Setup
+
+Firebase emulator guide 
+https://firebase.google.com/docs/emulator-suite/install_and_configure?authuser=0
+
+firebase init
+firebase logout
+firebase login --reauth --no-localhost
+firebase projects:list
+firebase init emulators
