@@ -1,3 +1,10 @@
+export interface AppUserProfile {
+  firstName: string;
+  lastName?: string;
+  about?: string;
+  email: string;
+};
+
 export interface UserProfile {
     email: string;
     firstName: string;

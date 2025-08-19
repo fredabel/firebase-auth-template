@@ -41,9 +41,9 @@ const EditProfile: React.FC = () => {
                     if (docSnap.exists()) {
                         const data =  docSnap.data()
                         setFormData({
-                            firstName: data.firstName,
-                            lastName: data.lastName,
-                            about: data.about,
+                            firstName: data.firstName || "",
+                            lastName: data.lastName || "",
+                            about: data.about ?? "",
                         })
                     } else {
                         setErrorMsg('User does not exist!');
@@ -67,6 +67,12 @@ const EditProfile: React.FC = () => {
         e.preventDefault()
         if (!user?.uid) {
             setErrorMsg("You must be signed in.");
+            setErrorOpen(true);
+            return;
+        }
+        // ✅ Validation
+        if (!formData.firstName.trim() || !formData.lastName.trim()) {
+            setErrorMsg("First name and Last name are required.");
             setErrorOpen(true);
             return;
         }
@@ -183,10 +189,9 @@ const EditProfile: React.FC = () => {
 
             <ErrorDialog
                 open={errorOpen}
-                onClose={() => {}}
+                onClose={() => { setErrorOpen(false)}}
                 title="User profile error"
                 message={errorMsg}
-                redirect='/'
             />
 
             <SuccessDialog

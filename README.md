@@ -1,69 +1,62 @@
-# React + TypeScript + Vite
+# React Firebase Authentication Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive web application built with React (TypeScript), Firebase Authentication, Firestore, and Tailwind CSS.
+It provides a smooth user experience with Login, Signup, Logout, Profile Display, and Profile Update features.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+🔐 Authentication – Secure login & signup using Firebase Auth
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+👤 User Profiles – Display and update user information stored in Firestore
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+🎨 Tailwind CSS – Modern and responsive UI design
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+📱 Responsive Layout – Works across desktop, tablet, and mobile devices
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+⚡ TypeScript – Strongly typed for better reliability and maintainability
+
+---
+
+## 🛠 Tech Stack
+
+React (TypeScript)
+
+Firebase (Auth + Firestore)
+
+Tailwind CSS
+
+---
+## Installation
+
+1. Clone the repo
+
+   ```sh
+   git clone https://github.com/fredabel/firebase-auth-template
+   ```
+2. Install dependencies
+ ```sh
+   npm install
+   ```
+3. Set up Firebase
+ - Go to Firebase Console
+ - Create a new project and enable Authentication and Firestore Database
+ - Add a web app to get your Firebase config
+ - Create .env file in the root directory:
+ ```sh
+    VITE_FIREBASE_API_KEY=your_api_key
+    VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+    VITE_FIREBASE_PROJECT_ID=your_project_id
+    VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+    VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+    VITE_FIREBASE_APP_ID=your_app_id 
 ```
+5. Run the app locally
+```sh
+   npm run dev
+   ```
+ 
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```

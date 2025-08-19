@@ -8,7 +8,7 @@ type Props = {
   onClose: () => void;
   title?: string;
   message: string;
-  redirect: string;
+  redirect?: string;
 };
 
 const ErrorDialog: React.FC<Props> = ({ open, onClose, title = 'Something went wrong', message, redirect }) => {
@@ -41,17 +41,15 @@ const ErrorDialog: React.FC<Props> = ({ open, onClose, title = 'Something went w
 					</div>
 
 					<div className="mt-4 flex justify-center">
-						{
-							redirect && 
-							( 
-								<button
-									onClick={()=> { onClose(); navigate(redirect)}}
-									className="cursor-pointer inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
-								>
-									Exit
-								</button>
-							)
-						}
+						<button
+							onClick={()=> {
+								onClose(); 
+								}
+							}
+							className="cursor-pointer inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
+						>
+							Close
+						</button>
 					</div>
 				</DialogPanel>
 			</div>

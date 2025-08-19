@@ -1,14 +1,9 @@
-import { useState, createContext, useContext, type ReactNode, useReducer, useEffect } from "react";
+import { useState, createContext, useContext, type ReactNode, useEffect } from "react";
 import { onAuthStateChanged, type User, reload  } from "firebase/auth";
 import { auth, db } from '../lib/firebase/firebaseConfig'
 import { doc, onSnapshot } from "firebase/firestore";
 
-type AppUserProfile = {
-  firstName: string;
-  lastName?: string;
-  about?: string;
-  email: string;
-};
+import {type AppUserProfile} from '../models/User.model'
 
 interface AuthContextType{
     user: null | User;
@@ -34,7 +29,6 @@ export const AuthProvider = ({children}: {children: ReactNode}) => {
         return () => unsub();
     }, []);
 
-    // Live profile doc subscription (updates UI immediately after edits)
     useEffect(() => {
         if (!user?.uid) {
             setProfile(null);
@@ -53,25 +47,12 @@ export const AuthProvider = ({children}: {children: ReactNode}) => {
         return () => unsub();
     }, [user?.uid]);
 
-    // For when you update displayName/photoURL via updateProfile(...)
     const reloadUser = async () => {
         if (auth.currentUser) {
         await reload(auth.currentUser);
-        // setUser ensures context consumers re-render with the refreshed user object
         setUser(auth.currentUser);
         }
     };
-
-    // useEffect(() =>{
-    //     const unsubscribe = onAuthStateChanged(auth, (user) => {
-    //         if(user){
-    //             setUser(user);
-    //         }else{
-    //             setUser(null)
-    //         }
-    //     })
-    //     return ()  => unsubscribe();
-    // },[])
 
     return (
         <AuthContext.Provider value={{user, profile, profileLoading, reloadUser}}>
