@@ -56,6 +56,10 @@ Tailwind CSS
 ```sh
    npm run dev
    ```
+---
+## Live Demo
+
+https://firebase-auth-template.netlify.app/
  
 
 
