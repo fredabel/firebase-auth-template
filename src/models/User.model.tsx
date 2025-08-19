@@ -6,3 +6,9 @@ export interface UserProfile {
     updatedAt: string;
     createdAt: string
 }
+
+export interface UserEditForm {
+    firstName: string;
+    lastName: string;
+    about: string;
+}

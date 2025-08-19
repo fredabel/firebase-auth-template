@@ -5,9 +5,12 @@ import { doc, getDoc } from "firebase/firestore";
 
 import type { UserProfile } from '../models/User.model'
 import ErrorDialog from '../components/ErrorDialog';
+import { PencilIcon } from '@heroicons/react/24/outline';
+import { useNavigate } from "react-router-dom";
 
 const Profile: React.FC = () => {
 
+    const navigate = useNavigate()
     const {user} = useAuth();
     const [profile, setProfile] = useState<UserProfile | null>(null)
     const [errorOpen, setErrorOpen] = useState(false);
@@ -47,9 +50,15 @@ const Profile: React.FC = () => {
                 {
                     user ? (
                        <div>
-                            <div className="px-4 sm:px-0">
-                                <h3 className="text-base/7 font-semibold text-gray-900">Profile Information</h3>
-                                <p className="mt-1 max-w-2xl text-sm/6 text-gray-500">This is your profile information page.</p>
+                            <div className="flex justify-between">
+                                <div className="px-4 sm:px-0">
+                                    <h3 className="text-base/7 font-semibold text-gray-900">Profile Information</h3>
+                                    <p className="mt-1 max-w-2xl text-sm/6 text-gray-500">This is your profile information page.</p>
+                                </div>
+                                <div className="flex gap-1 px-4 sm:px-0 items-center cursor-pointer">
+                                    <PencilIcon className="size-4 font-bold text-indigo-600 hover:text-indigo-500" /> 
+                                    <a className=" text-sm/6 font-bold text-indigo-600 hover:text-indigo-500 " onClick={()=> navigate('/profile/edit')}> Edit</a>
+                                </div>
                             </div>
                             <div className="mt-6 border-t border-gray-100">
                                 <dl className="divide-y divide-gray-100">
