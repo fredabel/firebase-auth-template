@@ -1,7 +1,6 @@
 
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
-import { useNavigate } from 'react-router-dom';
 
 type Props = {
   open: boolean;
@@ -11,10 +10,7 @@ type Props = {
   redirect?: string;
 };
 
-const ErrorDialog: React.FC<Props> = ({ open, onClose, title = 'Something went wrong', message, redirect }) => {
-
-	const navigate = useNavigate()
-
+const ErrorDialog: React.FC<Props> = ({ open, onClose, title = 'Something went wrong', message }) => {
   	return (
 		<Dialog open={open} onClose={onClose} className="relative z-50">
 			<DialogBackdrop transition className="fixed inset-0 bg-gray-500/75 transition-opacity
